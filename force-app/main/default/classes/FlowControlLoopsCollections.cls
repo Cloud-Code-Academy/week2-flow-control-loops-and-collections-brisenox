@@ -60,7 +60,15 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static Integer findMax(Integer num1, Integer num2) {
         // Initialize largestNum as null
-        Integer largestNum = num2;
+        //Integer largestNum = num2;
+        Integer[] myList = new List<Integer> {Num1, Num2};
+        myList.sort();
+        findMax = myList[Num2];
+        findMax = myList[Num1];
+        /* JAN 9 2024 - Trailhead website where i mirrored answer from - https://trailhead.salesforce.com/trailblazer-community/feed/0D54V00007T49ufSAB
+         */
+        
+
 
 
         return null; // Replace null with the variable you used to store the result
