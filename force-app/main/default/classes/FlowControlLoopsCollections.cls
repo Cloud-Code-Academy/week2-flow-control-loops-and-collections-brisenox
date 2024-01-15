@@ -177,19 +177,21 @@ public with sharing class FlowControlLoopsCollections {
      * @return The new string with the inputString repeated repeatCount times.
      */
     public static String repeatString(String inputString, Integer repeatCount) {
-        // Initialize the result String
+           // Initialize the result String
+    String result = '';
 
-        // Use a for loop to append the inputString to the result string repeatCount times
-        /*
-        for () {
+    // Use a for loop to append the inputString to the result string repeatCount times
+    for (Integer i = 0; i < repeatCount; i++) {
+        result += inputString;
 
-            // If it is not the last iteration, add a semicolon to separate the strings
+        if (i < repeatCount - 1) {
+            result += '; ';
         }
-        */
-
-        // Return the final result string
-        return null; // Replace null with the variable you used to store the result
     }
+
+    // Return the final result string
+    return result;
+}
 
     /**
      * Creates a List of integers and adds the integers 1, 2, and 3 to it.
@@ -198,15 +200,16 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static List<Integer> createAndPopulateList() {
         // Create a new list of integers
+        List<Integer> integerList = new List<Integer>();
 
         // Add the integers 1, 2, and 3 to the list
-        // add 1
-        // add 2
-        // add 3
+        integerList.add(1);
+        integerList.add(2);
+        integerList.add(3);
 
         // Return the populated list
-        return null; // Replace null with the variable you used to store the result
-    }
+        return integerList;
+}
 
     /**
      * Creates a List of integers and adds the integers from 1 to 5. Then it removes the number 3 from the list.
@@ -218,10 +221,11 @@ public with sharing class FlowControlLoopsCollections {
         List<Integer> numberList = new List<Integer>{1, 2, 3, 4, 5}; //DO NOT CHANGE
 
         // Remove the 3rd element (number 3) from the list
-        
-        // Return the updated list
-        return null; // Replace null with the variable you used to store the result
-    }
+    numberList.remove(2);
+
+    // Return the updated list
+    return numberList;
+}
 
     /**
      * Create a list filled with integers based on the input parameter.
@@ -231,14 +235,13 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static List<Integer> createIntegerList(Integer n) {
         // Create a new list of integers 
+        List<Integer> integerList = new List<Integer>();
 
-        /*
-        for() {
-            //add integer to the list
+        for (Integer i = 1; i <= n; i++) {
+            integerList.add(i);
         }
-        */ 
-
-        return null; // Replace null with the variable you used to store the result
+    
+        return integerList;
     }
 
     /**
@@ -253,8 +256,11 @@ public with sharing class FlowControlLoopsCollections {
         Set<String> stringSet = new Set<String>();
 
         //add strings to the set
-
-        return null; // Replace null with the variable you used to store the result
+        for (String str : inputList) {
+            stringSet.add(str);
+        }
+    
+        return stringSet;
     }
 
     /**
@@ -264,12 +270,17 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static Integer sumPositiveIntegers() {
         List<Integer> numbers = new List<Integer>{-1, 2, -3, 4, -5, 6}; //DO NOT CHANGE
-
-        // Loop through the list of integers
-            // if the number is negative skip this iteration
         
-
-        return null; // Replace null with the variable you used to store the result
+        Integer sum = 0;
+        // Loop through the list of integers
+        for (Integer num : numbers) {
+            // if the number is negative skip this iteration
+            if (num > 0) {
+                sum += num;
+            }
+        }
+    
+        return sum;
     }
 
     /**
@@ -281,11 +292,18 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static Integer findWordInList(String wordToFind, List<String> words) {
         // The variable to store the index of the word
-
+        Integer wordIndex = -1;
+        
         // Loop through the list of words
+        for (Integer i = 0; i < words.size(); i++) {
             // If the current word is the word to find, exit the loop
-
-        return null; // Replace null with the variable you used to store the result
+            if (words[i] == wordToFind) {
+                wordIndex = i;
+                break;
+            }
+        }
+    
+        return wordIndex;
     }
 
     /**
