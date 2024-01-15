@@ -64,9 +64,8 @@ public with sharing class FlowControlLoopsCollections {
         if (num1 == null || num2 == null) {
             return null;
         } 
-        return num1 = num2;
+        return num1 >= num2 ? num1 : num2;
     }
-
 
     /**
      * Checks if a number is positive, negative, or zero.
@@ -76,7 +75,17 @@ public with sharing class FlowControlLoopsCollections {
      * @return A string indicating whether the number is "Positive", "Negative", or "Zero", or null if the number is null.
      */
     public static String checkNumber(Integer a) {
-        return null; // Replace null with the variable you used to store the result
+        if (a == null) {
+            return null;
+        }
+
+        if (a > 0) {
+            return 'Positive';
+        } else  if (a < 0) {
+            return 'Negative';
+        }else {
+            return 'Zero';
+        }
     }
 
     /**
@@ -89,24 +98,24 @@ public with sharing class FlowControlLoopsCollections {
     public static String checkEvenOdd(Integer a) {
         if (a == null) {
         return null;
-    } else if (a > 0) {
-        return 'Positive';
-    } else if (a < 0) {
-        return 'Negative';
+    } else if (a == 2) {
+        return 'Even';
+    } else if (a == 1) {
+        return 'Odd';
     } else {
-        return 'Zero';
+        return 'Null';
     }
 }
 
     /**
-     * Checks if a string is empty, null, or contains text.
-     * Example: checkString("") should return "Empty"
-     * @param a The string to check.
-     * @return A string indicating whether the input is "Empty", "Null", or "Contains Text".
-     */
-    public static String checkString(String a) {
-        return null; // Replace null with the variable you used to store the result
-    }
+ * Checks if a string is empty, null, or contains text.
+ * Example: checkString("") should return "Empty"
+ * @param a The string to check.
+ * @return A string indicating whether the input is "Empty", "Null", or "Contains Text".
+ */
+public static String checkString(String a) {
+    return (a == null) ? 'Null' : (String.isNotBlank(a) ? 'Contains Text' : 'Empty');
+}
 
     /**
      * Determines the grade based on the score.
@@ -315,8 +324,20 @@ public with sharing class FlowControlLoopsCollections {
     public static Decimal countMoney() {
         // The list of money in the wallet, represented in dollars and cents
         List<Decimal> moneyInWallet = new List<Decimal>{0.50, 10, 3.84, 24.60, 9.08, 50, 4.90}; //DO NOT CHANGE
+        
+        Decimal totalValue = 0;
 
-        return null; // Replace null with the variable you used to store the result
+        // Loop through the list of money and add them up until it accumulates more than 40
+        for (Decimal money : moneyInWallet) {
+            totalValue += money;
+    
+            // If the total exceeds 40, break the loop
+            if (totalValue > 40) {
+                break;
+            }
+        }
+    
+        return totalValue;
     }
 
     /**
@@ -327,14 +348,15 @@ public with sharing class FlowControlLoopsCollections {
     public static Map<String, Integer> addItemsToMap() {
         // Initialize an empty Map
 
-        // Add key-value pairs to the Map
-        // add Apples => 5
-        // add Oranges => 10
-        // add Bananas => 15
-        // add Pears => 20
-        // add Grapes => 25
-
-        return null; // Replace null with the variable you used to store the result
+        Map<String, Integer> fruitMap = new Map<String, Integer>{
+            'Apples' => 5,
+            'Oranges' => 10,
+            'Bananas' => 15,
+            'Pears' => 20,
+            'Grapes' => 25
+        };
+    
+        return fruitMap;
     }
 
     /**
@@ -346,47 +368,48 @@ public with sharing class FlowControlLoopsCollections {
      * @return The salary of the employee, or null if the employee is not found in the Map.
      */
     public static Integer getSalary(String employeeName) {
-        // Initialize a Map
+        Map<String, Integer> employeeSalaryMap = new Map<String, Integer>();
 
-        // Add key-value pairs to the Map
-        // add John Doe => 50000
-        // add Jane Smith => 60000
-        // add Sam Brown => 55000
-        // add Alice Johnson => 65000
+        employeeSalaryMap.put('John Doe', 50000);
+        employeeSalaryMap.put('Jane Smith', 60000);
+        employeeSalaryMap.put('Sam Brown', 55000);
+        employeeSalaryMap.put('Alice Johnson', 65000);
 
-        // Get the salary of the employee
+        Integer salary = employeeSalaryMap.get(employeeName);
 
-        // Return the salary of the employee, or null if the employee is not found in the Map
-        return null; // Replace null with the variable you used to store the result
+        return salary;
+}
+
+  /**
+  * Create a map where the keys are the names of employees and the values are their salaries.
+  * Then, iterates over the map and checks if an employee's salary is more than 55000.
+  * If it is, add the employee's name to a list of employees that is returned by the method.
+  * Example: getHighPaidEmployees() should return ['Jane Smith', 'Alice Johnson']
+  * @return A list of employee names who have a salary more than 55000.
+  */
+  public static List<String> getHighPaidEmployees() {
+    // Initialize a Map
+    Map<String, Integer> employeeSalaries = new Map<String, Integer>{
+        'John Doe' => 50000,
+        'Jane Smith' => 60000,
+        'Sam Brown' => 55000,
+        'Alice Johnson' => 65000
+    };
+
+    // Initialize a list to store the names of high paid employees
+    List<String> highPaidEmployees = new List<String>();
+
+    // Iterate over the Map using a for loop
+    for (String employee : employeeSalaries.keySet()) {
+        // Check if the salary of the employee is more than 55000
+        if (employeeSalaries.get(employee) > 55000) {
+            // Add the employee to the list of high paid employees
+            highPaidEmployees.add(employee);
+        }
     }
 
-    /**
-     * Create a map where the keys are the names of employees and the values are their salaries.
-     * Then, iterates over the map and checks if an employee's salary is more than 55000.
-     * If it is, add the employee's name to a list of employees that is returned by the method.
-     * Remember that a Map is a collection of key-value pairs. Key are a set of unique values, so you can't have duplicate keys. Values are a list of values, so you can have duplicate values.
-     * Resource: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_loops_for_lists.htm
-     * Example: getHighPaidEmployees() should return ['Jane Smith', 'Alice Johnson']
-     * @return A list of employee names who have a salary more than 55000.
-     */
-    public static List<String> getHighPaidEmployees() {
-        // Initialize a Map
-        Map<String, Integer> employeeSalaries = new Map<String, Integer>();
-
-        // Add key-value pairs to the Map
-        // add John Doe => 50000
-        // add Jane Smith => 60000
-        // add Sam Brown => 55000
-        // add Alice Johnson => 65000
-
-        // Initialize a list to store the names of high paid employees
-
-        // Iterate over the Map using a for loop
-            // Check if the salary of the employee is more than 55000
-                // Add the employee to the list of high paid employees
-
-        // Return the list of high paid employees
-        return null; // Replace null with the variable you used to store the result
-    }
+    // Return the list of high paid employees
+    return highPaidEmployees;
+  }
 
 }
