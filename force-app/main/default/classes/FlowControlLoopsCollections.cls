@@ -60,18 +60,11 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static Integer findMax(Integer num1, Integer num2) {
         // Initialize largestNum as null
-        //Integer largestNum = num2;
-        Integer[] myList = new List<Integer> {Num1, Num2};
-        myList.sort();
-        findMax = myList[Num2];
-        findMax = myList[Num1];
-        /* JAN 9 2024 - Trailhead website where i mirrored answer from - https://trailhead.salesforce.com/trailblazer-community/feed/0D54V00007T49ufSAB
-         */
-        
-
-
-
-        return null; // Replace null with the variable you used to store the result
+        Integer largestNum = num2;
+        if (num1 == null || num2 == null) {
+            return null;
+        } 
+        return num1 = num2;
     }
 
 
@@ -94,8 +87,16 @@ public with sharing class FlowControlLoopsCollections {
      * @return A string indicating whether the number is "Even" or "Odd", or null if the number is null.
      */
     public static String checkEvenOdd(Integer a) {
-        return null; // Replace null with the variable you used to store the result
+        if (a == null) {
+        return null;
+    } else if (a > 0) {
+        return 'Positive';
+    } else if (a < 0) {
+        return 'Negative';
+    } else {
+        return 'Zero';
     }
+}
 
     /**
      * Checks if a string is empty, null, or contains text.
@@ -119,7 +120,21 @@ public with sharing class FlowControlLoopsCollections {
      * @return The grade for the given score.
      */
     public static String determineGrade(Integer score) {
-        return null; // Replace null with the variable you used to store the result
+        String grade = null;
+    
+        if (score >= 90) {
+            grade = 'A';
+        } else if (score >= 80) {
+            grade = 'B';
+        } else if (score >= 70) {
+            grade = 'C';
+        } else if (score >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+        
+        return grade;
     }
 
 
@@ -130,13 +145,13 @@ public with sharing class FlowControlLoopsCollections {
      * @return The sum of all integers up to the limit.
      */
     public static Integer sumUpToLimit(Integer intLimit) {
-        /* 
-         for (){
-            
-         }
-        */
-
-        return null; // Replace null with the variable you used to store the result
+        Integer sum = 0;
+    
+        for (Integer i = 1; i <= intLimit; i++) {
+            sum += i;
+        }
+        
+        return sum;
     }
 
     /**
@@ -145,17 +160,12 @@ public with sharing class FlowControlLoopsCollections {
      * @return The string "Hello World!; Hello World!; Hello World!; "
      */
     public static String returnHelloWorld() {
-        // Initialize the result String
+        // Create a List of three "Hello World!" strings
+    List<String> helloWorldList = new List<String>{'Hello World!', 'Hello World!', 'Hello World!'};
 
-        // Use a for loop to append 'Hello World!;' to the result string three times
-        /* 
-         for (){
-            
-         }
-        */
-
-        return null; // Replace null with the variable you used to store the result
-    }
+    // Use String.join to concatenate the List elements with a semicolon
+    return String.join(helloWorldList, '; ') + '; ';
+}
 
     /**
      * Generate a string where the input string is repeated the given number of times, with each
